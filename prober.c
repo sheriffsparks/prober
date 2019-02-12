@@ -84,7 +84,8 @@ int main(int argc, char **argv) {
     const uint8_t microsoft_vendor_data[] = {0x00,0x50,0xf2,0x08};
     struct frame_variable *microsoft_vendor  = create_frame_variable(221,4, &microsoft_vendor_data);
 
-    struct pkt * pkt = create_probe_req(g, 10, ssid, rates, extended_rates, dsset, htcaps, ext_caps, interworking, apple_vendor, epigram_vendor, microsoft_vendor);
+    struct pkt * pkt = create_probe_req(g, 10, ssid, rates, extended_rates, dsset, htcaps, ext_caps, 
+                                        interworking, apple_vendor, epigram_vendor, microsoft_vendor);
 
     if(pcap_sendpacket(handle, pkt->buf, pkt->size) != 0) {
         print_error(pcap_errbuf);
